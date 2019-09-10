@@ -7,7 +7,7 @@ use Illuminate\Console\Application as Artisan;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Contracts\Routing\Registrar;
 use Illuminate\Support\Facades\Route;
-use Skeleton\Foundation\Facades\Skeleton;
+use Porto\Foundation\Facades\Porto;
 
 trait RoutesLoader
 {
@@ -44,7 +44,7 @@ trait RoutesLoader
                 $files = File::allFiles($directory);
 
                 foreach ($files as $file) {
-                    $classFromFile = Skeleton::getClassFromFile($file);
+                    $classFromFile = Porto::getClassFromFile($file);
                     $this->app->make($classFromFile)->map($router);
                 }
             });
@@ -61,7 +61,7 @@ trait RoutesLoader
             $files = File::allFiles($directory);
 
             foreach ($files as $file) {
-                $router = $this->app->make(Skeleton::getClassFromFile($file));
+                $router = $this->app->make(Porto::getClassFromFile($file));
 
                 Artisan::starting(function ($artisan) use ($router) {
                     $router->map($artisan);
