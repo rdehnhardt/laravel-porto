@@ -1,6 +1,6 @@
 <?php
 
-namespace Skeleton\Loaders;
+namespace Porto\Loaders;
 
 trait ViewsLoader
 {
@@ -15,15 +15,10 @@ trait ViewsLoader
     protected $directory = null;
 
     /**
-     * @var string
-     */
-    protected $views = '/Ui/Web/Views';
-
-    /**
      * Load view from container path
      */
     protected function loadContainerViews()
     {
-        $this->loadViewsFrom($this->directory . $this->views, $this->name);
+        $this->loadViewsFrom("{$this->directory}/Ui/Web/Views", $this->name);
     }
 }

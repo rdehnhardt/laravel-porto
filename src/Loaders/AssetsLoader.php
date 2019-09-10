@@ -1,6 +1,6 @@
 <?php
 
-namespace Skeleton\Loaders;
+namespace Porto\Loaders;
 
 trait AssetsLoader
 {

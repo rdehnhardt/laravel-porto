@@ -7,9 +7,19 @@
       "email": "renatotkd@gmail.com"
     }
   ],
+  "require": {
+    "illuminate/support": "~6.0"
+  },
   "autoload": {
     "psr-4": {
       "Porto\\": "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Porto\\Providers\\PortoServiceProvider"
+      ]
     }
   }
 }

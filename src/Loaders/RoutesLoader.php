@@ -1,6 +1,6 @@
 <?php
 
-namespace Skeleton\Loaders;
+namespace Porto\Loaders;
 
 use File;
 use Illuminate\Console\Application as Artisan;
@@ -39,16 +39,16 @@ trait RoutesLoader
      */
     private function loadHttpRoutes($directory, $namespace, $middleware)
     {
-        Route::group(['namespace' => $namespace, 'middleware' => $middleware], function (Registrar $router) use ($directory) {
-            if (File::isDirectory($directory)) {
+        if (File::isDirectory($directory)) {
+            Route::group(['namespace' => $namespace, 'middleware' => $middleware], function (Registrar $router) use ($directory) {
                 $files = File::allFiles($directory);
 
                 foreach ($files as $file) {
                     $classFromFile = Skeleton::getClassFromFile($file);
                     $this->app->make($classFromFile)->map($router);
                 }
-            }
-        });
+            });
+        }
     }
 
     /**
