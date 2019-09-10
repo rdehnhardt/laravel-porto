@@ -1,0 +1,15 @@
+{
+  "name": "rdehnhardt/laravel-porto",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Renato Dehnhardt",
+      "email": "renatotkd@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Porto\\": "src/"
+    }
+  }
+}
