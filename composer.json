@@ -19,7 +19,10 @@
     "laravel": {
       "providers": [
         "Porto\\Providers\\PortoServiceProvider"
-      ]
+      ],
+      "aliases": {
+        "Porto": "Porto\\Foundation\\Facades\\Porto"
+      }
     }
   }
 }
