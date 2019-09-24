@@ -9,7 +9,8 @@
     ],
     "require": {
         "illuminate/support": "~6.0",
-        "apiato/core": "~2.4"
+        "fullsystem/core": "~2.4",
+        "fullsystem/heimdal": "~1.5"
     },
     "autoload": {
         "psr-4": {
@@ -28,29 +29,7 @@
         }
     },
     "repositories": [
-        {
-            "type": "package",
-            "package": {
-                "name": "apiato/core",
-                "version": "2.4.8",
-                "source": {
-                    "url": "git@github.com:fullsystem/core.git",
-                    "type": "vcs",
-                    "reference": "branches/master"
-                }
-            }
-        },
-        {
-            "type": "package",
-            "package": {
-                "name": "optimus/heimdal",
-                "version": "1.5.0",
-                "source": {
-                    "url": "git@github.com:fullsystem/heimdal.git",
-                    "type": "vcs",
-                    "reference": "branches/master"
-                }
-            }
-        }
+        { "name": "fullsystem/core", "type": "vcs", "url": "https://github.com/fullsystem/core" },
+        { "name": "fullsystem/heimdal", "type": "vcs", "url": "http://svn.example.org/private/repo" }
     ]
 }
