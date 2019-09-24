@@ -30,6 +30,6 @@
     },
     "repositories": [
         { "name": "fullsystem/core", "type": "vcs", "url": "https://github.com/fullsystem/core" },
-        { "name": "fullsystem/heimdal", "type": "vcs", "url": "http://svn.example.org/private/repo" }
+        { "name": "fullsystem/heimdal", "type": "vcs", "url": "https://github.com/fullsystem/heimdal" }
     ]
 }
