@@ -8,7 +8,8 @@
         }
     ],
     "require": {
-        "illuminate/support": "~6.0"
+        "illuminate/support": "~6.0",
+        "apiato/core": "~2.4"
     },
     "autoload": {
         "psr-4": {
@@ -25,5 +26,23 @@
                 "Porto": "Porto\\Foundation\\Facades\\Porto"
             }
         }
-    }
+    },
+    "repositories": [
+        {
+            "type": "package",
+            "package": {
+                "name": "apiato/core",
+                "version": "2.4.8",
+                "source": {
+                    "url": "git@github.com:fullsystem/core.git",
+                    "type": "vcs",
+                    "reference": "branches/master"
+                }
+            }
+        },
+        {
+            "type": "vcs",
+            "url":  "git@github.com:fullsystem/heimdal.git"
+        }
+    ]
 }
