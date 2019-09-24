@@ -41,8 +41,16 @@
             }
         },
         {
-            "type": "vcs",
-            "url":  "git@github.com:fullsystem/heimdal.git"
+            "type": "package",
+            "package": {
+                "name": "optimus/heimdal",
+                "version": "1.5.0",
+                "source": {
+                    "url": "git@github.com:fullsystem/heimdal.git",
+                    "type": "vcs",
+                    "reference": "branches/master"
+                }
+            }
         }
     ]
 }
