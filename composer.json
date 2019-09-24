@@ -1,6 +1,10 @@
 {
     "name": "rdehnhardt/laravel-porto",
     "license": "MIT",
+    "support": {
+        "issues": "https://github.com/rdehnhardt/laravel-porto/issues",
+        "source": "https://github.com/rdehnhardt/laravel-porto"
+    },
     "authors": [
         {
             "name": "Renato Dehnhardt",
@@ -9,8 +13,7 @@
     ],
     "require": {
         "illuminate/support": "~6.0",
-        "fullsystem/core": "~2.4",
-        "fullsystem/heimdal": "~1.5"
+        "apiato/core": "~2.4"
     },
     "autoload": {
         "psr-4": {
@@ -29,7 +32,6 @@
         }
     },
     "repositories": [
-        { "name": "fullsystem/core", "type": "vcs", "url": "https://github.com/fullsystem/core" },
-        { "name": "fullsystem/heimdal", "type": "vcs", "url": "https://github.com/fullsystem/heimdal" }
+        { "name": "apiato/core", "type": "vcs", "url": "git@github.com:fullsystem/core.git" }
     ]
 }
