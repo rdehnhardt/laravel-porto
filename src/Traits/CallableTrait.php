@@ -2,27 +2,27 @@
 
 namespace Porto\Traits;
 
-class CallableTrait
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\DB;
+
+trait CallableTrait
 {
-    /**
-     * This function will be called from anywhere (controllers, Actions,..) by the Apiato facade.
-     * The $class input will usually be an Action or Task.
-     *
-     * @param       $class
-     * @param array $runMethodArguments
-     * @param array $extraMethodsToCall
-     *
-     * @return  mixed
-     * @throws \Dto\Exceptions\UnstorableValueException
-     */
-    public function call($class, $runMethodArguments = [], $extraMethodsToCall = [])
+    public function call($class, $arguments = [])
     {
         $class = $this->resolveClass($class);
 
-        $this->callExtraMethods($class, $extraMethodsToCall);
-        // detects Requests arguments "usually sent by controllers", and cvoert them to Transporters.
-        $runMethodArguments = $this->convertRequestsToTransporters($class, $runMethodArguments);
-        return $class->run(...$runMethodArguments);
+        return $class->handle(...array_values($arguments));
     }
 
+    public function transactionalCall($class, $arguments = [])
+    {
+        return DB::transaction(function () use ($class, $arguments) {
+            return $this->call($class, $arguments);
+        });
+    }
+
+    private function resolveClass($class)
+    {
+        return App::make($class);
+    }
 }

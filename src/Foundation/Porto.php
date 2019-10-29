@@ -2,10 +2,13 @@
 
 namespace Porto\Foundation;
 
+use Porto\Traits\CallableTrait;
 use Symfony\Component\Finder\SplFileInfo;
 
 class Porto
 {
+    use CallableTrait;
+
     /**
      * @param SplFileInfo $file
      * @return mixed|string
