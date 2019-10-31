@@ -19,6 +19,11 @@ trait RoutesLoader
     /**
      * @var string|null
      */
+    protected $prefix = true;
+
+    /**
+     * @var string|null
+     */
     protected $directory = null;
 
     /**
@@ -45,7 +50,7 @@ trait RoutesLoader
     private function loadHttpRoutes($directory, $namespace, $middleware)
     {
         if (File::isDirectory($directory)) {
-            Route::group(['namespace' => $namespace, 'middleware' => $middleware, 'as' => "{$this->name}::"], function (Registrar $router) use ($directory) {
+            Route::group(['namespace' => $namespace, 'middleware' => $middleware, 'as' => $this->getContainerName()], function (Registrar $router) use ($directory) {
                 $files = File::allFiles($directory);
 
                 foreach ($files as $file) {
@@ -77,5 +82,17 @@ trait RoutesLoader
                 });
             }
         }
+    }
+
+    /**
+     * @return string
+     */
+    private function getContainerName()
+    {
+        if ($this->prefix) {
+            return "{$this->name}::";
+        }
+
+        return '';
     }
 }
