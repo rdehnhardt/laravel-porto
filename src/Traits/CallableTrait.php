@@ -14,6 +14,8 @@ trait CallableTrait
      */
     public function call($class, $arguments = [])
     {
+        $arguments = is_array($arguments) ? $arguments : [$arguments];
+
         $class = $this->resolveClass($class);
 
         return $class->handle(...array_values($arguments));
