@@ -29,8 +29,6 @@ trait AliasesLoader
      */
     protected function loadAlias($alias, $class)
     {
-        if (class_exists($class)) {
-            AliasLoader::getInstance()->alias($alias, $class);
-        }
+        AliasLoader::getInstance()->alias($alias, $class);
     }
 }
