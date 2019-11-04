@@ -2,8 +2,8 @@
 
 namespace Porto\Abstracts\Repositories;
 
+use Illuminate\Support\Collection;
 use Prettus\Repository\Contracts\CacheableInterface as PrettusCacheable;
-use Prettus\Repository\Criteria\RequestCriteria as PrettusRequestCriteria;
 use Prettus\Repository\Eloquent\BaseRepository as PrettusRepository;
 use Prettus\Repository\Traits\CacheableRepository as PrettusCacheableRepository;
 
@@ -15,15 +15,7 @@ abstract class Repository extends PrettusRepository implements PrettusCacheable
      * Set to 0 to disable
      */
     protected $maxPaginationLimit = 0;
-
-    /**
-     * Boot up the repository, pushing criteria.
-     */
-    public function boot()
-    {
-        $this->pushCriteria(app(PrettusRequestCriteria::class));
-    }
-
+    
     /**
      * @param null $limit
      * @param array $columns
@@ -45,5 +37,15 @@ abstract class Repository extends PrettusRepository implements PrettusCacheable
         }
 
         return parent::paginate($limit, $columns, $method);
+    }
+
+    /**
+     * @param Collection $criterias
+     */
+    public function pushCriterias(Collection $criterias)
+    {
+        $criterias->each(function ($criteria) {
+            $this->pushCriteria($criteria);
+        });
     }
 }
