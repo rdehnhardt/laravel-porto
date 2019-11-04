@@ -29,6 +29,16 @@ trait ResponseTrait
         return $this->json($message, $status, $headers, $options);
     }
 
+    public function forbiden($message = null, $status = 401, array $headers = [], $options = 0): JsonResponse
+    {
+        return $this->json($message, $status, $headers, $options);
+    }
+
+    public function error($message = null, $status = 500, array $headers = [], $options = 0): JsonResponse
+    {
+        return $this->json($message, $status, $headers, $options);
+    }
+
     public function deleted(): JsonResponse
     {
         return $this->accepted();
