@@ -19,6 +19,7 @@ class HttpKernel extends LaravelHttpKernel
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         \Porto\Parents\Middlewares\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
+        \Spatie\Cors\Cors::class,
     ];
 
     /**

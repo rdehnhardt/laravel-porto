@@ -12,7 +12,8 @@
         }
     ],
     "require": {
-        "illuminate/support": "~6.0"
+        "illuminate/support": "~6.0",
+        "spatie/laravel-cors": "^1.6"
     },
     "autoload": {
         "psr-4": {
@@ -29,8 +30,5 @@
                 "Porto": "Porto\\Foundation\\Facades\\Porto"
             }
         }
-    },
-    "repositories": [
-        { "name": "apiato/core", "type": "vcs", "url": "git@github.com:fullsystem/core.git" }
-    ]
+    }
 }
