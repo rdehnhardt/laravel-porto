@@ -7,11 +7,11 @@ use Illuminate\Http\JsonResponse;
 
 trait ResponseTrait
 {
-    public function transform($data, $transformer = null): array
+    public function transform($data, $transformer = null, $status = 200, array $headers = [], $options = 0): JsonResponse
     {
         $fractal = Fractal::create($data, $transformer);
 
-        return $fractal->toArray();
+        return $this->json($fractal->toArray(), $status, $headers, $options);
     }
 
     public function json($message, $status = 200, array $headers = [], $options = 0): JsonResponse
