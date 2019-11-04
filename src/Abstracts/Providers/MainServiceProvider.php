@@ -2,6 +2,7 @@
 
 namespace Porto\Abstracts\Providers;
 
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 use Porto\Loaders\AliasesLoader;
 use Porto\Loaders\ProvidersLoader;
@@ -16,6 +17,8 @@ abstract class MainServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Schema::defaultStringLength(191);
+
         $this->loadServiceProviders();
         $this->loadContainerAliases();
     }
