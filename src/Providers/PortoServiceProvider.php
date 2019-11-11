@@ -14,8 +14,10 @@ class PortoServiceProvider extends MainServiceProvider
      */
     public function register()
     {
-        parent::register();
+        $this->mergeConfigFrom(__DIR__ . '/../../config/porto.php', 'porto');
 
         $this->app->alias(Porto::class, 'Porto');
+
+        parent::register();
     }
 }
