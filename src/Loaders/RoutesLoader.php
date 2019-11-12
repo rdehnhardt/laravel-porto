@@ -32,6 +32,12 @@ trait RoutesLoader
     protected $namespace = null;
 
     /**
+     * @var boolean
+     */
+    protected $private = false;
+
+
+    /**
      * @return void
      */
     protected function loadContainerRoutes()
@@ -50,6 +56,8 @@ trait RoutesLoader
     private function loadHttpRoutes($directory, $namespace, $middleware)
     {
         if (File::isDirectory($directory)) {
+            $middleware = $this->private ? "auth:$middleware" : $middleware;
+
             Route::group(['namespace' => $namespace, 'middleware' => $middleware, 'as' => $this->getContainerName(), 'prefix' => $this->getContainerPrefix()], function (Registrar $router) use ($directory) {
                 $files = File::allFiles($directory);
 

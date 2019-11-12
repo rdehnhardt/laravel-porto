@@ -14,7 +14,6 @@ class PortoServiceProvider extends MainServiceProvider
      * @var  array
      */
     protected $providers = [
-        HashidsServiceProvider::class
     ];
 
     /**

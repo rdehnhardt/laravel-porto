@@ -4,6 +4,7 @@ namespace Porto\Abstracts\Repositories;
 
 use Illuminate\Support\Collection;
 use Prettus\Repository\Contracts\CacheableInterface as PrettusCacheable;
+use Prettus\Repository\Contracts\CriteriaInterface;
 use Prettus\Repository\Eloquent\BaseRepository as PrettusRepository;
 use Prettus\Repository\Traits\CacheableRepository as PrettusCacheableRepository;
 
