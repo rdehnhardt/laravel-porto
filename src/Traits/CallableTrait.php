@@ -27,14 +27,26 @@ trait CallableTrait
     }
 
     /**
-     * @param $class
-     * @param array $arguments
      * @return mixed
      */
-    public function transactionalCall($class, $arguments = [])
+    public function callOrFail()
     {
-        return DB::transaction(function () use ($class, $arguments) {
-            return $this->call($class, $arguments);
+        if (!$result = call_user_func_array(array($this, 'call'), func_get_args())) {
+            throw new InvalidCallException;
+        }
+
+        return $result;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function transactionalCall()
+    {
+        $arguments = func_get_args();
+
+        return DB::transaction(function () use ($arguments) {
+            return call_user_func_array(array($this, 'call'), $arguments);
         });
     }
 
