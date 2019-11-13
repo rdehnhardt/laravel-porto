@@ -14,13 +14,11 @@ trait CallableTrait
     protected $beforeMethods = [];
 
     /**
-     * @param $class
-     * @param array $arguments
      * @return mixed
      */
-    public function call($class, $arguments = [])
+    public function call()
     {
-        $arguments = $this->parseArguments($arguments);
+        list($class, $arguments) = $this->parseArguments(func_get_args());
 
         $class = App::make($class);
         $this->callBeforeMethods($class);
@@ -78,10 +76,12 @@ trait CallableTrait
      */
     private function parseArguments($arguments): array
     {
-        $arguments = is_array($arguments) ? $arguments : [$arguments];
-        $arguments = $this->isAssociativeArray($arguments) ? array_values($arguments) : $arguments;
+        $output = [$arguments[0]];
+        unset($arguments[0]);
 
-        return $arguments;
+        $output[1] = $arguments;
+
+        return $output;
     }
 
     private function isAssociativeArray($array)

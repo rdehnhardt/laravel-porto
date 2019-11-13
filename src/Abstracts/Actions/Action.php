@@ -2,7 +2,6 @@
 
 namespace Porto\Abstracts\Actions;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Prettus\Repository\Contracts\CriteriaInterface;
 use Prettus\Repository\Criteria\RequestCriteria;
