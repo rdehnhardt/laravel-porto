@@ -5,6 +5,7 @@ namespace Porto\Providers;
 use Porto\Abstracts\Providers\MainServiceProvider;
 use Porto\Foundation\Porto;
 use Vinkla\Hashids\Facades\Hashids;
+use OwenIt\Auditing\AuditingServiceProvider;
 
 class PortoServiceProvider extends MainServiceProvider
 {
@@ -14,6 +15,7 @@ class PortoServiceProvider extends MainServiceProvider
      * @var  array
      */
     protected $providers = [
+        AuditingServiceProvider::class
     ];
 
     /**

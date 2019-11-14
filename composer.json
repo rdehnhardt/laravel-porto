@@ -18,6 +18,7 @@
         "prettus/l5-repository": "^2.6",
         "spatie/laravel-sluggable": "^2.2",
         "rdehnhardt/eloquent-case": "^6.0",
+        "owen-it/laravel-auditing": "^9.3",
         "vinkla/hashids": "^7.0"
     },
     "autoload": {
