@@ -97,11 +97,7 @@ trait RoutesLoader
      */
     private function getContainerName()
     {
-        if ($this->prefix) {
-            return "{$this->name}::";
-        }
-
-        return '';
+        return "{$this->name}::";
     }
 
     /**
