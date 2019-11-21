@@ -56,7 +56,7 @@ trait RoutesLoader
     private function loadHttpRoutes($directory, $namespace, $middleware)
     {
         if (File::isDirectory($directory)) {
-            $middleware = $this->private ? "auth:$middleware" : $middleware;
+            $middleware = $this->getMiddleware($middleware);
 
             Route::group(['namespace' => $namespace, 'middleware' => $middleware, 'as' => $this->getContainerName(), 'prefix' => $this->getContainerPrefix()], function (Registrar $router) use ($directory) {
                 $files = File::allFiles($directory);
@@ -110,5 +110,18 @@ trait RoutesLoader
         }
 
         return '';
+    }
+
+    /**
+     * @param $middleware
+     * @return string
+     */
+    private function getMiddleware($middleware): string
+    {
+        if ($middleware === 'api') {
+            return "auth:$middleware";
+        }
+
+        return 'auth';
     }
 }
