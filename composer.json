@@ -29,8 +29,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Porto\\Providers\\PortoServiceProvider",
-                "Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider"
+                "Porto\\Providers\\PortoServiceProvider"
             ],
             "aliases": {
                 "Porto": "Porto\\Foundation\\Facades\\Porto"
