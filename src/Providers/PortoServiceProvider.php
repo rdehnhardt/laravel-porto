@@ -15,7 +15,7 @@ class PortoServiceProvider extends MainServiceProvider
      * @var  array
      */
     protected $providers = [
-        AuditingServiceProvider::class
+        AuditingServiceProvider::class,
     ];
 
     /**
