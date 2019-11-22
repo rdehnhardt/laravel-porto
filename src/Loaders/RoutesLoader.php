@@ -56,9 +56,7 @@ trait RoutesLoader
     private function loadHttpRoutes($directory, $namespace, $middleware)
     {
         if (File::isDirectory($directory)) {
-            $middleware = $this->getMiddleware($middleware);
-
-            Route::group(['namespace' => $namespace, 'middleware' => $middleware, 'as' => $this->getContainerName(), 'prefix' => $this->getContainerPrefix()], function (Registrar $router) use ($directory) {
+            Route::group(['namespace' => $namespace, 'middleware' => $this->getMiddleware($middleware), 'as' => "{$this->name}::", 'prefix' => $this->getContainerPrefix()], function (Registrar $router) use ($directory) {
                 $files = File::allFiles($directory);
 
                 foreach ($files as $file) {
@@ -95,14 +93,6 @@ trait RoutesLoader
     /**
      * @return string
      */
-    private function getContainerName()
-    {
-        return $this->prefix ? "{$this->name}::" : '';
-    }
-
-    /**
-     * @return string
-     */
     private function getContainerPrefix()
     {
         if ($this->prefix) {
@@ -114,14 +104,15 @@ trait RoutesLoader
 
     /**
      * @param $middleware
-     * @return string
+     * @return array
      */
-    private function getMiddleware($middleware): string
+    private function getMiddleware($middleware): array
     {
-        if ($middleware === 'api') {
-            return "auth:$middleware";
+        switch ($middleware) {
+            case 'api':
+                return $this->private ? ['auth:api'] : ['api'];
+            default:
+                return $this->private ? [$middleware, 'auth'] : [$middleware];
         }
-
-        return 'auth';
     }
 }

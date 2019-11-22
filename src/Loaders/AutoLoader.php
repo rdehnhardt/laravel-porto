@@ -9,6 +9,7 @@ trait AutoLoader
     use ConfigsLoader;
     use LanguagesLoader;
     use MigrationsLoader;
+    use FactoriesLoader;
     use RoutesLoader;
     use ViewsLoader;
 
@@ -22,6 +23,7 @@ trait AutoLoader
         $this->loadContainerConfigs();
         $this->loadContainerLanguages();
         $this->loadContainerMigrations();
+        $this->loadContainerFactories();
         $this->loadContainerRoutes();
         $this->loadContainerViews();
     }

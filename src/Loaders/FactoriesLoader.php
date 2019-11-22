@@ -16,7 +16,7 @@ trait FactoriesLoader
     /**
      * @return void
      */
-    protected function loadContainerMigrations()
+    protected function loadContainerFactories()
     {
         $this->loadFactories("{$this->directory}/Data/Factories");
     }
