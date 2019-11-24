@@ -25,7 +25,7 @@ abstract class Repository extends PrettusRepository implements PrettusCacheable
      */
     public function paginate($limit = null, $columns = ['*'], $method = "paginate")
     {
-        $limit = $limit ?: Request::get('limit');
+        $limit = $limit ?: request('limit');
 
         if ($limit == "0") {
             return parent::all($columns);
