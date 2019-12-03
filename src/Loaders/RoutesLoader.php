@@ -61,7 +61,10 @@ trait RoutesLoader
 
                 foreach ($files as $file) {
                     $classFromFile = Porto::getClassFromFile($file);
-                    $this->app->make($classFromFile)->map($router);
+                    $class = $this->app->make($classFromFile);
+
+                    $class->breadcrumbs();
+                    $class->map($router);
                 }
             });
         }

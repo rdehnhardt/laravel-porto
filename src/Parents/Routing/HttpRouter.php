@@ -11,4 +11,11 @@ abstract class HttpRouter
      * @return mixed
      */
     abstract public function map(Router $router);
+
+    /**
+     * Container Breadcrumbs
+     */
+    public function breadcrumbs()
+    {
+    }
 }
