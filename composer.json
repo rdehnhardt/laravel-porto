@@ -19,7 +19,8 @@
         "spatie/laravel-sluggable": "^2.2",
         "rdehnhardt/eloquent-case": "^6.0",
         "owen-it/laravel-auditing": "^9.3",
-        "vinkla/hashids": "^7.0"
+        "vinkla/hashids": "^7.0",
+        "davejamesmiller/laravel-breadcrumbs": "^5.3"
     },
     "autoload": {
         "psr-4": {

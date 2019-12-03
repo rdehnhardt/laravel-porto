@@ -31,7 +31,7 @@ trait CallableTrait
      */
     public function callOrFail()
     {
-        if (!$result = call_user_func_array(array($this, 'call'), func_get_args())) {
+        if (!$result = call_user_func_array([$this, 'call'], func_get_args())) {
             throw new InvalidCallException;
         }
 
@@ -46,7 +46,7 @@ trait CallableTrait
         $arguments = func_get_args();
 
         return DB::transaction(function () use ($arguments) {
-            return call_user_func_array(array($this, 'call'), $arguments);
+            return call_user_func_array([$this, 'call'], $arguments);
         });
     }
 
